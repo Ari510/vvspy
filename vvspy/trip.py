@@ -84,7 +84,10 @@ def get_trips(
         "imparedOptionsActive": kwargs.get("imparedOptionsActive", "1"),
         "itOptionsActive": kwargs.get("itOptionsActive", "1"),
         "itdDate": check_time.strftime("%Y%m%d"),
+        "itdDateTimeDepArr": kwargs.get("itdDateTimeDepArr", "arr"),
+        "itdTripDateTimeDepArr": kwargs.get("itdTripDateTimeDepArr", "arr"),
         "itdTime": check_time.strftime("%H%M"),
+
         "language": kwargs.get("language", "de"),
         "locationServerActive": kwargs.get("locationServerActive", "1"),
         "macroWebTrip": kwargs.get("macroWebTrip", "true"),
