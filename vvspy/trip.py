@@ -84,10 +84,7 @@ def get_trips(
         "imparedOptionsActive": kwargs.get("imparedOptionsActive", "1"),
         "itOptionsActive": kwargs.get("itOptionsActive", "1"),
         "itdDate": check_time.strftime("%Y%m%d"),
-        "itdDateTimeDepArr": kwargs.get("itdDateTimeDepArr", "arr"),
-        "itdTripDateTimeDepArr": kwargs.get("itdTripDateTimeDepArr", "arr"),
         "itdTime": check_time.strftime("%H%M"),
-
         "language": kwargs.get("language", "de"),
         "locationServerActive": kwargs.get("locationServerActive", "1"),
         "macroWebTrip": kwargs.get("macroWebTrip", "true"),
@@ -126,6 +123,12 @@ def get_trips(
         "w_objPrefAl": kwargs.get("w_objPrefAl", "12"),
         "w_regPrefAm": kwargs.get("w_regPrefAm", "1"),
     }
+
+    if "itdDateTimeDepArr" in kwargs:
+        params["itdDateTimeDepArr"] = kwargs["itdDateTimeDepArr"] # Pass "arr" as value to set request to arrival-based mode
+    if "itdTripDateTimeDepArr" in kwargs:
+        params["itdTripDateTimeDepArr"] = kwargs["itdTripDateTimeDepArr"] # This should be set ton "arr" too, idk if you need both but better be safe than sorry
+
 
     if session:
         r = session.get(__API_URL, **{**request_params, **{"params": params}})
